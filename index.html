@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adhar genrate</title>
+   
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+    <!-- jQuery Library (required for the QR code plugin) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- QR Code Generator (jQuery QR Code Plugin) -->
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
+<!-- html2pdf.js Library (for generating PDF) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+<style>
+    *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* font-family: Arial, sans-serif; */
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+}
+
+p {
+    font-size: 14px; /* Example font size */
+}
+
+.main_div{
+    width: 100%;
+    height:auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.sub_container{
+    width: 80%;
+    height: auto;
+
+}
+.from_container{
+
+display: grid;
+grid-template-columns: repeat(3,1fr);
+grid-column-gap: 20px;
+color: rgba(0, 0, 0, 0.774);
+}
+
+.main_div{
+    /* border: 1px solid red; */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input{
+    font-size: 15px;
+}
+
+input[type="file"] {
+
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+#pincode{
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+
+    
+}
+
+
+button {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#submit{
+    /* width: 200px; */
+}
+.flex_around{
+    display: flex;
+align-items: center;
+justify-content: space-between;
+}
+button:hover {
+    background-color: #3e8e41;
+}
+/* #enteradhadetails{
+    position: absolute;
+    left: 140px;
+    top: 10px;
+    font-size: 18px;
+    color: rgba(0, 89, 255, 0.658);
+} */
+
+
+.adhar_display{
+    width: 100%;
+    height: 100vh;
+    background: #000000b0;
+    position: absolute;
+    top: 0px;
+left: 0px;
+display: none;
+
+
+}
+.adhar_card_show_div{
+    width: 718.11px;
+    height:  1046.93px;
+/* position: relative; */
+
+
+    margin: 50px auto;
+    padding: 20px;
+
+    border-radius: 10px;
+    /* background-color: #f9f9f9; */
+    text-align: center;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.adhar {
+    height:  1046.93px;
+    width: 718.11px;
+    position:absolute;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+    /* border: 1px solid rgb(0, 38, 255); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.data_structer{
+    width: 100%;
+    height:  auto;
+/* border: 1px solid red; */
+
+}
+
+#adhardemo_img{
+    width: 100%;
+    height: auto;
+    position: relative;
+    
+    }
+    
+
+.show_data_sturcter{
+
+
+
+position: absolute;
+top: 74px;
+left: 5px;
+width: 710px;
+height:  84.1%;
+overflow: hidden;
+}
+
+.downlode_div{
+    width: auto;
+    height: 100%;
+ position: absolute;
+ bottom: -450px
+ ;
+ right: 40px;
+}
+.downlode_div button{
+margin-bottom: 50px;
+
+margin-left: 20px;
+}
+#arrow_icon{
+    cursor: pointer;
+    width: 40px;
+    position: absolute;
+    top: 50px;
+    left: 10px;
+}
+
+
+.adhar_top_details_div{
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+}
+#aadhaarCard_top_info{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0;
+    overflow: hidden;
+
+
+}
+
+.adjust_info{
+    /* border: 2px solid red; */
+}
+.details_top_show{
+    width: 220px;
+    height: auto;
+position: absolute;
+top: 270px;
+left: 68px;
+text-align: left;
+
+}
+
+.details_top_show p{
+    font-size: 10px;
+    font-weight: 300;
+
+}
+#enrollment_no{
+    font-size: 12.3px;
+    font-weight: 300;
+    font-weight: 400;
+    position: absolute;
+    top: 240px;
+left: 31px;
+
+}
+
+.signature_text{
+    width: 57px;
+    margin-top: 70px;
+    margin-left: 4px;
+
+}
+.signature_text p {
+    font-size: 4.2px;
+    font-weight: 300
+} 
+
+.top_bottom_details{
+width: 130px;
+height:130Px;
+position: absolute;
+top: 415px;
+right: 15Px;
+
+}
+
+#qr_show{
+  width: 100%;
+  height: 100%;
+ /* margin-right: 5px; */
+ /* overflow: hidden; */
+ image-rendering: crisp-edges;
+
+}
+
+.adhar_number_show_div{
+
+    width: 100%;
+    height:160px;
+    margin-top: 30px;
+    position: absolute;
+    bottom: 20px;
+    left: 0px;
+
+
+
+}
+.main_adhar_front{
+    width: 100%;
+    height: 100%;
+position: relative;
+
+}
+#adhar_number_show_big{
+    font-size: 22px;
+ /* border: 1px solid red; */
+ position: absolute;
+ bottom:270px;
+ left: 100px;
+ 
+
+}
+
+#img_show{
+    width: 60px;  /* 3.5 cm = approximately 140 px */
+    height: 65px; /* 4.5 cm = approximately 180 px */
+    object-fit: cover;
+    position: absolute;
+    top: 5px;
+    left: 25px;
+  
+}
+.details_adhar_front{
+    /* border: 1px solid red; */
+
+    position: absolute;
+    top: 5px;
+    left: 95px;
+text-align: left;
+}
+
+.details_adhar_front p{
+    font-size: 10px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+}
+#adhar_number_show_front{
+    position: absolute;
+    bottom:0px;
+    left:120px;
+    font-size: 19px;
+    /* border: 1px solid red; */
+}
+
+
+/* .main_adhar_back{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    border: 2px solid rgb(44, 32, 218);
+} */
+
+.secend_side_adhar{
+    width: 50%;
+    height: 170px;
+    position: absolute;
+    bottom:20px;
+    right: 5px;
+overflow: hidden; 
+}
+
+.secend_side_details{
+width: 100%;
+height: 100%;
+position: relative;
+
+
+}
+.addres_in_secend{
+    width: 55%;
+    /* padding: 3px; */
+    position: absolute;
+    top: 5px;
+    left: 20px;
+    text-align: left;
+
+
+
+}
+.addres_in_secend p {
+    font-size: 10px;
+
+    /* text-align: justify; */
+}
+.bold{
+    font-weight: bold;
+    font-size: 6.5px;
+}
+.ad_magin{
+    margin-top:8px;
+}
+#last_adhar_number_show{
+    text-align: center;
+    font-size: 19px;
+
+    position: absolute;
+    bottom: 0px;
+left: 120px;
+/* border: 1px solid red; */
+
+}
+
+
+
+#final_qr_show{
+width: 100px;
+height: 100px;
+    position: absolute;
+    top: 10px;
+    right: 0px; 
+/* overflow: hidden; */
+image-rendering:crisp-edges;
+
+} 
+
+
+#first_page_qr{
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    top: 25px;
+    right: 20px; 
+overflow: hidden;
+image-rendering:crisp-edges;
+/* border:1px solid red; */
+}
+
+
+#final_qr_show,#first_page_qr,#qr_show{
+    padding: 5px;
+    /* background: #ffffff; */
+}
+
+
+/* spiner */
+
+.spinner {
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#navv {
+    width: 100%;
+    height: 40px;
+    background: #000;
+
+    margin-bottom: 50px;
+  }
+  
+  #navv ul {
+    height: 100%;
+ 
+
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content:right;
+  }
+  
+  
+  #navv ul li {
+    display: inline-block;
+    margin-right: 0px;
+    padding: 15px 20px;
+
+  }
+  
+  /* Style for the links */
+  #navv ul li a {
+    text-decoration: none; /* Remove underline */
+    color: white; /* White text */
+    font-size: 15px; /* Increase the font size */
+    padding: 15px 20px;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+  }
+  
+  /* Hover effect for the links */
+  #navv ul li a:hover {
+    background-color: yellow; /* Change background on hover */
+    color: black; /* Change text color on hover */
+    border-radius: 5px; /* Rounded edges */
+  }
+
+#panDisplay{
+    width: 100%;
+    height: 100vh;
+    background: rgba(12, 8, 0, 0.432);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.pan_img_div{
+    width: 718.11px;
+    height:  1046.93px;
+    /* border:1px solid red; */
+    overflow: hidden;
+    position: relative;
+
+}
+#pan_card{
+    width: 100%;
+    height: 100%;
+}
+.pan_structer{
+    width: 718.11px;
+    height:  1046.93px;
+    border: 1px solid red;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.pan_top{
+    border: 1px solid green;
+    width: 100%;
+    height: 510px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+#top_name_show{
+    position: absolute;
+    top: 220px;
+    left: 215px;
+}
+#top_fater_name_show{
+    position: absolute;
+    top: 265px;
+    left: 215px;
+}
+#top_dob_show{
+    position: absolute;
+    top: 305px;
+    left: 215px;
+}
+#top_gnder_show{
+    position: absolute;
+    top: 350px;
+    left: 215px;
+}
+
+#top_pan_signature_show{
+    /* border: 1px solid red; */
+    width: 195px;
+    height: 85px;
+    position: absolute;
+    top: 380px;
+    left: 203px;
+}
+
+#top_qrshow{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 401px;
+    right: 197px;
+    border: 1px solid black;
+}
+  .pan_bottom{
+    border: 3px solid magenta;
+    width: 93%;
+    height: 200px;
+    position: absolute;
+    bottom: 19px;
+    left: 26px;
+    text-transform: uppercase;
+  }
+  #pan_man_img{
+    width: 40.8px;
+    height: 50px;
+    object-fit: cover;
+    position: absolute;
+    top: 50px;
+    left: 12px;
+  }
+  .pan_details p{
+
+    font-size: 8px;
+    font-weight: bold;
+  }
+#pan_name_show{
+    position: absolute;
+    top: 117px;
+    left: 14px;
+}
+
+#fatharname_pan_show{
+    position: absolute;
+    top: 143px;
+    left: 14px;
+}
+
+#dob_pan_show{
+    position: absolute;
+    top: 175px;
+    left: 15px;
+}
+
+#pan_number_show{
+    position: absolute;
+    top: 75px;
+    left: 93px;
+    font-size: 14px;
+    /* letter-spacing: .5px; */
+}
+#pan_qr_show{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 58px;
+    left: 207px;
+    border: 1px solid black;
+}
+
+#pan_signature_show{
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    bottom:10px;
+    left: 110px;
+    /* border: 1px solid black; */
+
+}
+
+.pan_btnss{
+    position: absolute;
+    right: 50px;
+    top: 310px;
+
+}
+
+.pan_btnss button{
+    margin-bottom: 20px;
+}
+
+/* Mobile screens (up to 600px) */
+@media screen and (max-width: 600px) {
+    .from_container {
+        grid-template-columns: 1fr; /* Stack form elements vertically */
+    }
+
+    .sub_container {
+        width: 85%;
+    }
+
+    input, select, textarea, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+.downlode_div {
+    width: auto;
+    height: 100%;
+    position: absolute;
+    bottom: -670px;
+    right: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.downlode_div button{
+    width:auto;
+    padding: 10px 20px;
+
+
+    }
+
+    #arrow_icon{
+        cursor: pointer;
+        width: 40px;
+        position: absolute;
+        top:20px;
+        left: 50px;
+    }
+
+    /* adhar start  */
+}
+
+</style>
+
+</head>
+
+<body>
+    <!-- <h2 id="enteradhadetails" >Enter Adhar Details</h2> -->
+    <nav id="navv"> 
+        
+    </nav>
+
+    <form action="" id="fromC">
+        <div class="main_div" id="md">
+
+
+
+            <div class="sub_container">
+
+
+
+                <div class="from_container">
+
+
+                    <div class="from1">
+                        <div class="form-group">
+                            <label for="aadhaar-card-no">Aadhaar Card No.</label>
+                            <input type="text" id="aadhaar-card-no" name="aadhaar-card-no"
+                                placeholder="Aadhaarcard No..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="house-no">House No</label>
+                            <input type="text" id="house-no" name="house-no" placeholder="House No" required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <input type="text" id="state" name="state" placeholder="State" required>
+                        </div>
+
+
+
+                    </div>
+                    <div class="from2">
+
+
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Example: Raju Kumar" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="locality">Gali, Locality</label>
+                            <input type="text" id="locality" name="locality" placeholder="Gali, Locality, Panchaya"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="post-office">Post Office</label>
+                            <input type="text" id="post-office" name="post-office" placeholder="Post Office" required>
+                        </div>
+
+                    </div>
+                    <div class="from3">
+
+                  
+                
+                        
+
+
+
+                        <div class="form-group">
+                            <label for="father-name" id="chng_ff">Father Name</label>
+                            <input type="text" id="father-name" name="father-name" placeholder="Example: Shyam Singh"
+                                required>
+                        </div>
+
+
+            
+
+
+
+
+
+                        <div class="form-group">
+                            <label for="relation">Relation</label>
+                            <select id="relation" name="relation" required>
+                                <option value="">Select Relation</option>
+                                <option value="S/O">Son of (S/O)</option>
+                                <option value="D/O">Daughter of (D/O)</option>
+                                <option value="H/O">Husband of (H/O)</option>
+                                <option value="W/O">Wife of (W/O)</option>
+                                <option value="M/O">Mother of (M/O)</option>
+                                <option value="F/O">Father of (F/O)</option>
+                                <option value="G/O">Guardian of (G/O)</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label for="pincode">Pincode</label>
+                            <input type="number" id="pincode" name="pincode" placeholder="pincode" required>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="from4">
+
+
+                        <div class="form-group">
+                            <label for="date-of-birth">Date of Birth</label>
+                            <input type="date" id="date-of-birth" name="date-of-birth" placeholder="26/07/1992"
+                                required>
+                        </div>
+
+
+                        <div class="gender_class">
+                            <label for="gender">Select Gender</label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <textarea id="address" name="address"
+                                placeholder="S/O: Mo Rahim, khurdaha, Jakhauli, Faizabad, Uttar Pradesh, 878987"
+                                required></textarea>
+                        </div>
+
+
+<!-- 
+
+                        <button type="submit" id="submit">Submit</button>
+                        <button type="reset" id="clear">Clear</button>
+ -->
+
+
+                    </div>
+
+
+                    <div class="from5">
+
+                        <div class="form-group">
+                            <label for="image">Select Image</label>
+                            <input type="file" id="image" name="image" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="local_dob">Date of birth Local</label>
+                            <input type="text" id="local_dob" required>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="Gendar_local">Gendar Local</label>
+                            <input type="text" id="Gendar_local" required>
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+                    <div class="from6">
+
+
+                      
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" placeholder="City" required>
+                        </div>
+
+
+
+
+
+
+
+                        <div class="form-group">
+                            <label for="name-local-language">Name (Local Language)</label>
+                            <input type="text" id="name-local-language" name="name-local-language"
+                                placeholder="Name (Local Language)" required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="address-local-language">Address (Local Language)</label>
+                            <textarea id="address-local-language" name="address-local-language"
+                                placeholder="Address (Local Language)" required></textarea>
+                        </div>
+
+
+
+                      
+
+
+
+                    </div>
+
+
+
+                    
+
+<div class="from7">
+
+
+
+   
+    <div class="form-group">
+        <label for="local-language">Select Local Language</label>
+        <select id="local-language" name="local-language" required>
+            <option value="option1">Hindi</option>
+        </select>
+    </div>
+
+
+</div>
+
+<div class="from8">
+
+        <!-- <div class="form-group">
+        <input type="text" id="relation-local" placeholder="Relation in Hindi">
+    </div> -->
+    <button type="reset" id="clear">Clear</button>
+ 
+    
+</div>
+
+
+<div class="form-group flex_around">
+
+                            
+    <button type="submit" id="submit">Submit</button>
+</div> 
+
+
+
+
+
+    </form>
+
+
+    </div>
+
+    </div>
+    
+    </div>
+
+    <!-- show -->
+
+    <div class="adhar_display" id="ff">
+        <div class="adhar_card_show_div"  id="maint">
+
+            <div class="adhar  " id="d_adhar">
+
+<div class="data_structer" id="dwn" >
+    
+    <img src="bg.png" id="adhardemo_img" alt="">
+
+<div class="show_data_sturcter">
+
+
+
+<div class="adhar_top_details_div">
+    <div id="aadhaarCard_top_info">
+
+
+<div class="adjust_info">
+
+
+
+        <p id="enrollment_no">नामांकन क्रम / Enrollment No: </p>
+  
+<div class="details_top_show">
+    <p>To</p>
+    <p id="fullName_show_hindi">सुरेंद्र सिंह</p> <!-- Full Name -->
+    <p id="englishName">Surendra Singh</p> <!-- English Name -->
+    <p id="address_show">
+    
+    </p>
+
+
+        
+        <div class="signature_text">
+            <!-- <p> Digitally signed by DS
+                UNIQUE IDENTIFICATION
+                AUTHORITY OF INDIA 03
+                <span id="date_show"> 
+                    IST </span></p> -->
+
+
+                </div>       
+
+
+    
+
+</div>
+
+
+
+
+<div class="top_bottom_details">
+                
+    <!-- <img src=""  id="qr_show"  alt=""> -->
+     <div id="qr_show"></div>
+
+    
+</div>
+
+<div class="show_n">
+    <h2 id="adhar_number_show_big"></h2>
+
+</div>
+
+<div class="adhar_number_show_div">
+
+    
+
+
+<div class="main_adhar_front">
+
+    <div class="pic">
+<img src="./images/man.jpg" id="img_show" alt="">
+
+    </div>
+
+    <div class="details_adhar_front">
+        <p id="name_show_main_adhar_front_hindi" >सुरेंद्र सिंह</p>
+        <p id="name_show_main_adhar_front_english" >Surendra Singh</p>
+        <p id="dob_show_main_front_adhar">जन्म तिथि / DOB : 6/05/1992</p>
+        <p id="gnder_show_main_adhar_front" > <span id="hindi_g">पुरुष </span> / <span id="eng_g">Male</span></p>
+
+
+    </div>
+
+
+    <div id="first_page_qr">
+    </div>
+
+    <div class="adhar_front_number">
+        <h2 id="adhar_number_show_front"></h2>
+    </div>
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+            </div>
+
+
+
+
+            <div class="secend_side_adhar">
+
+                <div class="secend_side_details">
+             <div class="addres_in_secend"> 
+
+                <div class="divv">
+
+                    
+                    <p class="bold" >पता: </p>
+                    <p id="hindi_addres"> 
+                        
+                        
+                        
+                    </p>
+                </div>
+
+
+                  
+<div class="ad_magin">
+
+    
+    <p class="bold" >Address:</p>      
+    <p id="english_addres">  </p>
+    
+</div>
+                   </div> 
+
+<div class="last-adharNum_show">
+    <h2 id="last_adhar_number_show"></h2>
+
+</div>
+
+<div id="final_qr_show">
+    
+</div>
+
+
+
+                </div>
+               
+            </div>
+            
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+        </div>
+
+            </div>
+</div>
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+    <div class="arrow">
+        <img src="./images/arrow.png" id="arrow_icon" alt="">
+    </div>
+  
+
+    <!-- <div id="loading">
+        <div class="spinner"></div>
+        <p>Processing... Please wait</p>
+    </div> -->
+
+    <div class="downlode_div">
+        <button id="edit_btn">Edit</button>
+        <button id="downlode_btn">
+            <span id="spinner" class="spinner" style="display: none;"></span>
+            <span id="buttonText">Download Now</span>
+        </button>
+
+    
+    </div>
+
+
+    </div>
+
+    <script>
+
+
+
+
+
+$(document).ready(function () {
+    // function generateUID() {
+    //     let uid = '';
+    //     for (let i = 0; i < 12; i++) {
+    //         uid += Math.floor(Math.random() * 10);
+    //     }
+    //     return uid;
+    // }
+
+
+    function reformatDOB(dob) {
+    let dobParts = dob.split("-");
+    return `${dobParts[2]}/${dobParts[1]}/${dobParts[0]}`;
+}
+
+    function generateQRCode() {
+        const name = $('#name').val();
+        const gender = $('#gender').val();
+        const dob = $('#date-of-birth').val();
+        const fatherName = $('#father-name').val();
+        const houseNo = $('#house-no').val();
+        const street = $('#locality').val();
+        const postOffice = $('#post-office').val();
+        const state = $('#state').val();
+        const pincode = $('#pincode').val();
+        const uid = $('#aadhaar-card-no').val();
+        const relations = $('#relation').val();
+        const city1 = $('#city').val();
+
+
+
+        // city
+
+        // Simplify QR Data
+        const largeQRData = '<?xml version="1.0" encoding="UTF-8"?>\n' +
+            '<PrintLetterBarcodeData ' +
+            'uid="' + uid + '" ' +
+            'name="' + name + '" ' +
+            'gender="' + gender.charAt(0) + '" ' +
+            'yob="' + (new Date(dob).getFullYear()) + '" ' +
+            'co= " ' + relations + " " + fatherName + '" ' +
+            'house="' + houseNo + '" ' +
+            'street="' + street + '" ' +
+            'po="' + postOffice + '" ' +
+            'dist="' + city1 + '" ' +   
+            'subdist="' + city1 + '" ' + 
+            'state="' + state + '" ' +
+            'pc="' + pincode + '" ' +
+            'dob="' + reformatDOB(dob) + '" ' + 
+            '/>';
+
+
+
+
+        $('#qr_show').empty();
+        $('#final_qr_show').empty();
+        $('#first_page_qr').empty();
+
+    
+
+
+
+
+        function generateQRCodes(width1, height1, width2, height2, width3, height3) {
+    // First QR Code
+    $('#qr_show').empty().qrcode({
+        render: "svg",
+        text: largeQRData,
+        width: width1,
+        height: height1,
+        version: 5,
+        correctLevel: 1
+    });
+
+    // Second QR Code
+    $('#final_qr_show').empty().qrcode({
+        render: "svg",
+        text: largeQRData,
+        width: width2,
+        height: height2,
+        version: 5,
+        correctLevel: 0
+    });
+
+    // Third QR Code
+    $('#first_page_qr').empty().qrcode({
+        render: "svg",
+        text: largeQRData,
+        width: width3,
+        height: height3,
+        version: 5,
+        correctLevel: 0
+    });
+}
+
+// Function to check screen size and update QR code sizes accordingly
+function updateQRCodeSizes() {
+    if (window.innerWidth <= 768) {
+        // Mobile sizes
+        generateQRCodes(110, 110, 80, 80, 60, 60);
+    } else {
+        // Desktop sizes
+        // generateQRCodes(90, 90, 50, 50, 45, 45);
+        generateQRCodes(110, 110, 80, 80, 60, 60);
+
+
+
+    }
+}
+
+// Initial load
+updateQRCodeSizes();
+
+// Resize handler to update sizes dynamically on window resize
+$(window).resize(function() {
+    updateQRCodeSizes();
+});
+
+
+
+
+        console.log("Bada QR Data: ", largeQRData);
+        console.log("Chhota QR Data: ", largeQRData);
+    }
+
+    $('#submit').on('click', function (e) {
+        e.preventDefault();
+        generateQRCode();
+    });
+});
+
+// 
+
+document.getElementById('downlode_btn').addEventListener('click', function () {
+    var element = document.getElementById('maint');
+    var button = document.getElementById('downlode_btn')
+    var spinner = document.getElementById('spinner');
+    var buttonText = document.getElementById('buttonText');
+
+    // Show spinner and change button text
+    spinner.style.display = "inline-block";
+    buttonText.innerText = "Final Checking..";
+    button.disabled = true; // Disable the button
+
+    setTimeout(function () {
+
+      
+
+        html2pdf()
+            .set({
+                margin: 1,
+                filename: 'aadhaar_card.pdf',
+                image: { type: 'jpeg', quality: 1 },
+                html2canvas: { scale: 5 },  // Adjust scale for better quality
+                jsPDF: {
+                    unit: 'mm',
+                    format: 'a4',
+                    orientation: 'portrait'
+                }
+            })
+            .from(element)
+            .save()
+            .then(function () {
+                console.log("PDF has been generated and downloaded.");
+                // Hide spinner and reset button text after download
+                spinner.style.display = "none";
+                buttonText.innerText = "Download Now";
+                button.disabled = false; // Enable the button
+            });
+    }, 10);
+});
+
+    </script>
+    
+    <!-- jQuery CDN -->
+
+<!-- QR Code generation library CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector(".from_container");
+    const adharDisplay = document.querySelector(".adhar_display");
+    const submitButton = form.querySelector("button[type='submit']");
+    const arrowButton = document.getElementById("arrow_icon");
+    const editBtn = document.getElementById("edit_btn");
+
+    // Mapping for relation translations
+    const relationTranslations = {
+        "S/O": "पुत्र",
+        "D/O": "पुत्री",
+        "H/O": "पति",
+        "W/O": "पत्नी",
+        "M/O": "माता",
+        "F/O": "पिता",
+        "G/O": "अभिभावक",
+        "Other": "अन्य"
+    };
+
+    // Function to dynamically update the father-name label
+    function updateFatherNameLabel() {
+        const selectedRelation = document.getElementById('relation').value || "Other";
+        const translatedRelation = relationTranslations[selectedRelation] || "अन्य";
+        const fatherNameLabel = document.querySelector("label[for='father-name']");
+        
+        // Update the label with the translated relation
+        fatherNameLabel.textContent = `${translatedRelation} का नाम`; 
+    }
+
+// Function to dynamically update the address in both English and Hindi
+
+async function updateAddress() {
+    const fatherName = document.getElementById('father-name').value || '';
+    const houseNumber = document.getElementById('house-no').value || '';
+    const locality = document.getElementById('locality').value || '';
+    const area = document.getElementById('post-office').value || ''; // Assuming post-office is used for 'Area'
+    const city = document.getElementById('city').value || '';
+    const state = document.getElementById('state').value || '';
+    const pincode = document.getElementById('pincode').value || '';
+    const relationG = document.getElementById('relation').value || 'Other';
+    
+    // Translate relation manually or using Google Translate
+    const relationHindi = relationTranslations[relationG] || relationG;
+
+    // Translate each address component to Hindi
+    const fatherNameHindi = await translateToHindi(fatherName);
+    const houseNumberHindi = await translateToHindi(houseNumber);
+    const localityHindi = await translateToHindi(locality);
+    const areaHindi = await translateToHindi(area);
+    const cityHindi = await translateToHindi(city);
+    const stateHindi = await translateToHindi(state);
+
+    // Construct the full address in both languages
+    const fullAddress = `${relationG}: ${fatherName}, ${houseNumber}, ${locality}, ${area}, ${city}, ${state} - ${pincode}`;
+    const fullAddressHindi = `${relationHindi}: ${fatherNameHindi}, ${houseNumberHindi}, ${localityHindi}, ${areaHindi}, ${cityHindi}, ${stateHindi} - ${pincode}`;
+
+    // Update the address display in English and Hindi
+    document.getElementById('address').textContent = fullAddress;
+    document.getElementById('address-local-language').textContent = fullAddressHindi;
+}
+    document.getElementById('father-name').addEventListener('input', updateAddress);
+    document.getElementById('house-no').addEventListener('input', updateAddress);
+    document.getElementById('locality').addEventListener('input', updateAddress);
+    document.getElementById('post-office').addEventListener('input', updateAddress);
+    document.getElementById('city').addEventListener('input', updateAddress);
+    document.getElementById('state').addEventListener('input', updateAddress);
+    document.getElementById('pincode').addEventListener('input', updateAddress);
+    document.getElementById('relation').addEventListener('change', function() {
+        updateAddress();
+        updateFatherNameLabel(); // Update the father-name label when relation changes
+    });
+
+    submitButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const inputs = form.querySelectorAll("input[required], textarea[required], select[required]");
+        let allFilled = true;
+
+        inputs.forEach(input => {
+            if (!input.value) {
+                allFilled = false;
+                input.style.borderColor = "red"; // Highlight empty fields
+            } else {
+                input.style.borderColor = ""; // Reset border color if filled
+
+            }
+        });
+
+        if (allFilled) {
+            adharDisplay.style.display = "block"; // Show the adhar_display section
+            gsap.fromTo(adharDisplay, { x: "-100%", opacity: 0 }, { x: "0%", opacity: 1, duration: 0.5 });
+       
+            document.getElementById("md").style.display = "none";
+        } else {
+            alert("Please fill in all required fields.");
+        }
+
+        document.getElementById('englishName').textContent = document.getElementById('name').value;
+        document.getElementById('fullName_show_hindi').textContent = document.getElementById('name-local-language').value;
+
+        document.getElementById("address_show").innerHTML = document.getElementById("address").textContent;
+
+
+        document.getElementById("hindi_addres").innerHTML = document.getElementById("address-local-language").value;
+
+
+        document.getElementById("english_addres").innerHTML = document.getElementById("address").textContent;
+
+        document.getElementById("name_show_main_adhar_front_hindi").innerHTML = document.getElementById("name-local-language").value;
+        document.getElementById("name_show_main_adhar_front_english").innerHTML = document.getElementById("name").value;
+
+        // Get the date value
+        let dob = document.getElementById("date-of-birth").value;
+
+        // Split the date by '-' to get year, month, and day
+        let dobParts = dob.split("-");
+
+        // Reformat the date to dd/mm/yyyy
+        let formattedDOB = `${dobParts[2]}/${dobParts[1]}/${dobParts[0]}`;
+
+        // Display the formatted date
+        document.getElementById("dob_show_main_front_adhar").innerHTML = "जन्म तिथि / DOB: " + formattedDOB;
+
+        // Update gender in both English and Hindi
+        document.getElementById("hindi_g").innerHTML = document.getElementById("Gendar_local").value;
+        document.getElementById("eng_g").innerHTML = document.getElementById("gender").value;
+
+        const segment1 = "8654";  // First 4 digits fixed
+        const segment2 = "96852"; // Middle 5 digits fixed
+        
+        // Generate random last 5 digits
+        const segment3 = Math.floor(Math.random() * 90000) + 10000; // Last 5 digits
+        
+        // Format the enrollment number
+        const enrollmentNumber = `${segment1}/${segment2}/${segment3}`;
+
+        // Update the enrollment number
+        document.getElementById("enrollment_no").innerText = "नामांकन क्रम / Enrollment No: " + enrollmentNumber;
+
+        // Format Aadhaar number
+        function formatAadhaarNumber(number) {
+            return number.replace(/(\d{4})(\d)/, '$1 $2').replace(/(\d{4})(\d)/, '$1 $2').replace(/(\d{4})(\d)/, '$1 $2');
+        }
+
+        let a_number = document.getElementById('aadhaar-card-no').value;
+        if (a_number.length === 12) { // Ensure it is 12 digits
+            a_number = formatAadhaarNumber(a_number);
+            document.getElementById("adhar_number_show_big").innerHTML = a_number;
+            document.getElementById("adhar_number_show_front").innerHTML = a_number;
+            document.getElementById("last_adhar_number_show").innerHTML = a_number;
+        }
+    });
+
+    arrowButton.addEventListener("click", function () {
+        gsap.to(adharDisplay, { x: "100%", opacity: 0, duration: 0.5, onComplete: function () {
+               
+            document.getElementById("md").style.display = "flex";
+            
+            adharDisplay.style.display = "none"; // Hide the display after animation
+            } });
+    });
+
+    editBtn.addEventListener("click", function () {
+        gsap.to(adharDisplay, { x: "100%", opacity: 0, duration: 0.5, onComplete: function () {
+            document.getElementById("md").style.display = "flex";
+             
+            
+            adharDisplay.style.display = "none"; // Hide the display after animation
+            } });
+    });
+
+    // Function to translate text to Hindi using Google Translate API
+    async function translateToHindi(text) {
+        const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=hi&dt=t&q=${encodeURIComponent(text)}`;
+        const response = await fetch(url);
+        const result = await response.json();
+        return result[0][0][0]; // Return the translated text
+    }
+
+    // Event listener for translating the name
+    document.getElementById('name').addEventListener("blur", async function () {
+        const name = document.getElementById('name').value;
+        const translatedName = await translateToHindi(name);
+        document.getElementById('name-local-language').value = translatedName;
+    });
+
+
+
+    document.getElementById('date-of-birth').addEventListener('input', function() {
+        const dob = this.value; // Format is YYYY-MM-DD
+        if (dob) {
+            document.getElementById('local_dob').value = dob; // Keep the date in English numerals
+        } else {
+            document.getElementById('local_dob').value = ''; // Clear if empty
+        }
+    });
+
+    
+
+// Event listener for translating the gender
+document.getElementById('gender').addEventListener('change', async function() {
+    const gender = this.value;
+    if (gender) {
+        const translatedGender = await translateToHindi(gender);
+        document.getElementById('Gendar_local').value = translatedGender;
+    } else {
+        document.getElementById('Gendar_local').value = ''; // Clear if empty
+    }
+});
+
+
+
+    
+    
+    document.getElementById('image').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const imgShow = document.getElementById('img_show');
+    
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imgShow.src = e.target.result; // Set the src of the img to the uploaded file
+                imgShow.style.display = 'block'; // Show the image
+            }
+            reader.readAsDataURL(file); // Convert the file to a data URL
+        }
+    });
+    
+    
+
+
+
+    // Event listener for translating the locality
+    document.getElementById('locality').addEventListener('blur', async function () {
+        const locality = document.getElementById('locality').value;
+        const translatedLocality = await translateToHindi(locality);
+        document.getElementById('locality-local-language').value = translatedLocality;
+    });
+});
+
+document.getElementById('submit_pan').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent form submission
+    let isValid = true;
+
+    // Get all input fields and select elements
+    const panCardNo = document.getElementById('panCardNo');
+    const namePan = document.getElementById('name_pan');
+    const fatherNamePan = document.getElementById('fatherName_pan');
+    const dateOfBirthPan = document.getElementById('dateOfBirth_pan');
+    const genderPan = document.getElementById('gender_pan');
+    const panDisplay = document.getElementById("panDisplay");
+
+    const signature = document.getElementById('signature');
+    const imagePan = document.getElementById('image_pan');
+    
+    // Preview PAN images
+    const pan_man_img = document.getElementById('pan_man_img');
+    const topPanSignatureShow = document.getElementById('top_pan_signature_show');
+    const panSignatureShow = document.getElementById('pan_signature_show');
+
+    // Array of all input fields for easy validation
+    const fields = [panCardNo, namePan, fatherNamePan, dateOfBirthPan, genderPan, signature, imagePan];
+
+    // Validate each field
+    fields.forEach(field => {
+        if (field.value === '') {
+            field.style.borderColor = 'red';
+            isValid = false;
+        } else {
+            field.style.borderColor = ''; // Reset the border color
+        }
+    });
+
+    // If all fields are valid, proceed with form submission
+    if (isValid) {
+        // Show the PAN display section
+        panDisplay.style.display = "block";
+
+        // Get values from the form fields
+        const panCardValue = panCardNo.value;
+        const nameValue = namePan.value;
+        const fatherNameValue = fatherNamePan.value;
+        const dobValue = dateOfBirthPan.value;
+        const genderValue = genderPan.value;
+
+        // Update the display elements with the captured values
+        document.getElementById("top_name_show").textContent = nameValue;
+        document.getElementById("top_fater_name_show").textContent = fatherNameValue;
+        document.getElementById("top_dob_show").textContent = formatDate(dobValue);
+        document.getElementById("top_gnder_show").textContent = genderValue.charAt(0).toUpperCase() + genderValue.slice(1);
+        document.getElementById("pan_name_show").textContent = nameValue;
+        document.getElementById("fatharname_pan_show").textContent = fatherNameValue;
+        document.getElementById("dob_pan_show").textContent = formatDate(dobValue);
+        document.getElementById("pan_number_show").textContent = panCardValue;
+
+        // Show images (PAN and signature) using FileReader
+        if (imagePan.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                pan_man_img.src = e.target.result;
+            };
+            reader.readAsDataURL(imagePan.files[0]);
+        }
+
+        if (signature.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                topPanSignatureShow.src = e.target.result;
+                panSignatureShow.src = e.target.result;
+            };
+            reader.readAsDataURL(signature.files[0]);
+        }
+
+        // Use GSAP animation to display the PAN details
+        gsap.fromTo(panDisplay, { x: "-100%", opacity: 0 }, { x: "0%", opacity: 1, duration: 0.5 });
+    } else {
+        alert('Please fill all the required fields.');
+    }
+});
+
+
+
+
+// Date formatting function
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    // Get the UTC time and adjust for local time zone
+    const utcDate = new Date(date.getTime() + date.getTimezoneOffset() * 60000);
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    return utcDate.toLocaleDateString('en-GB', options); // Format as DD/MM/YYYY
+}
+
+// Clear button functionality
+document.getElementById('clear_pan').addEventListener('click', function() {
+    // Clear all input fields
+    document.getElementById('fromC').reset();
+
+    // Reset border color for all fields
+    const fields = document.querySelectorAll('input, select');
+    fields.forEach(field => {
+        field.style.borderColor = '';
+    });
+
+    // Hide the images
+    panImageShow.style.display = "none"; // Hide the PAN image when clearing the form
+    topPanSignatureShow.style.display = "none"; // Hide the signature when clearing the form
+});
+
+// Edit button functionality
+document.getElementById("pan_edit").addEventListener("click", function () {
+    gsap.to(panDisplay, { x: "100%", opacity: 0, duration: 0.5, onComplete: function () {
+        document.getElementById("md").style.display = "flex";
+        panDisplay.style.display = "none"; // Hide the display after animation
+        } 
+    });
+});
+
+    </script>
+</body>
+
+</html>
+
+
+
